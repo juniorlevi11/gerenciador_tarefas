@@ -1,0 +1,36 @@
+@page
+@model GerenciadorTarefas.Pages.Tasks.IndexModel
+
+<h1>Lista de Tarefas</h1>
+
+<div class="mb-3">
+    <a asp-page="/Tasks/Create" class="btn btn-success">Cadastrar Nova Tarefa</a>
+</div>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Título</th>
+            <th>Descrição</th>
+            <th>Data de Vencimento</th>
+            <th>Concluída</th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var task in Model.Tasks)
+        {
+            <tr>
+                <td>@task.Title</td>
+                <td>@task.Description</td>
+                <td>@task.DueDate.ToString("dd/MM/yyyy")</td>
+                <td>@(task.IsCompleted ? "Sim" : "Não")</td>
+                <td>
+                    <a asp-page="/Tasks/View" asp-route-id="@task.Id" class="btn btn-info btn-sm">Visualizar</a>
+                    <a asp-page="/Tasks/Edit" asp-route-id="@task.Id" class="btn btn-warning btn-sm">Editar</a>
+                    <a asp-page="/Tasks/Delete" asp-route-id="@task.Id" class="btn btn-danger btn-sm">Deletar</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

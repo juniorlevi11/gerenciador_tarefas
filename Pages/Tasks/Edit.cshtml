@@ -20,5 +20,6 @@
         <label for="IsCompleted">Concluída</label>
         <input type="checkbox" id="IsCompleted" name="TaskItem.IsCompleted" @(Model.TaskItem.IsCompleted ? "checked" : "") />
     </div>
-    <button type="submit">Salvar Alterações</button>
+    <button type="submit" class="btn btn-primary">Salvar Alterações</button>
+    <a asp-page="/Tasks/Index" class="btn btn-secondary">Cancelar</a>
 </form>

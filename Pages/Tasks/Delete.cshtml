@@ -1,11 +1,10 @@
 @page "{id:int}"
-@model GerenciadorTarefas.Pages.Tasks.ViewModel
+@model GerenciadorTarefas.Pages.Tasks.DeleteModel
 
-<h1>Detalhes da Tarefa</h1>
+<h1>Excluir Tarefa</h1>
 
-<div>
-    <strong>ID:</strong> @Model.TaskItem.Id
-</div>
+<p>Tem certeza de que deseja excluir a seguinte tarefa?</p>
+
 <div>
     <strong>Título:</strong> @Model.TaskItem.Title
 </div>
@@ -19,4 +18,7 @@
     <strong>Concluída:</strong> @(Model.TaskItem.IsCompleted ? "Sim" : "Não")
 </div>
 
-<a asp-page="/Tasks/Index" class="btn btn-secondary">Voltar</a>
+<form method="post">
+    <button type="submit" class="btn btn-danger">Excluir</button>
+    <a asp-page="/Tasks/Index" class="btn btn-secondary">Cancelar</a>
+</form>

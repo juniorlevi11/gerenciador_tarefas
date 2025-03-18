@@ -5,7 +5,13 @@
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-    <a href="/Tasks/Create">Adicionar Nova Tarefa</a>
+    <h1 class="display-4">Bem-vindo ao Gerenciador de Tarefas</h1>
+    <p>Gerencie suas tarefas de forma simples e eficiente.</p>
+
+    <div class="mt-4">
+        <a asp-page="/Tasks/Create" class="btn btn-success btn-lg">Cadastrar Nova Tarefa</a>
+        <a asp-page="/Tasks/ViewAll" class="btn btn-primary btn-lg">Visualizar Tarefas</a>
+        <a asp-page="/Tasks/Index" class="btn btn-warning btn-lg">Editar Tarefa</a>
+        <a asp-page="/Tasks/Index" class="btn btn-danger btn-lg">Deletar Tarefa</a>
+    </div>
 </div>

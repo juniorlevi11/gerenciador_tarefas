@@ -19,38 +19,38 @@ namespace GerenciadorTarefas.Pages.Tasks
 
         public IActionResult OnGet(int id)
         {
-            TaskItem = _context.Tasks.Find(id);
+            TaskItem = _context.Tasks.Find(id) ?? new TaskItem();
 
             if (TaskItem == null)
             {
-                return NotFound();
+                return NotFound(); // Retorna 404 se o item não for encontrado
             }
 
             return Page();
         }
 
-        public IActionResult OnPost()
+        public async Task<IActionResult> OnPostAsync()
         {
             if (!ModelState.IsValid)
             {
                 return Page();
             }
 
-            var taskInDb = _context.Tasks.Find(TaskItem.Id);
+            var taskToUpdate = await _context.Tasks.FindAsync(TaskItem.Id);
 
-            if (taskInDb == null)
+            if (taskToUpdate == null)
             {
                 return NotFound();
             }
 
-            taskInDb.Title = TaskItem.Title;
-            taskInDb.Description = TaskItem.Description;
-            taskInDb.DueDate = TaskItem.DueDate;
-            taskInDb.IsCompleted = TaskItem.IsCompleted;
+            // Atualize os campos da tarefa
+            taskToUpdate.Title = TaskItem.Title;
+            taskToUpdate.Description = TaskItem.Description;
+            taskToUpdate.DueDate = TaskItem.DueDate;
 
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
 
-            return RedirectToPage("/Index");
+            return RedirectToPage("./Index");
         }
     }
 }
