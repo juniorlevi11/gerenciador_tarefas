@@ -18,12 +18,14 @@ namespace GerenciadorTarefas.Pages.Tasks
 
         public IActionResult OnGet(int id)
         {
-            TaskItem = _context.Tasks.Find(id);
+            var task = _context.Tasks.FirstOrDefault(t => t.Id == id);
 
-            if (TaskItem == null)
+            if (task == null)
             {
                 return NotFound(); // Retorna 404 se o item não for encontrado
             }
+
+            TaskItem = task; // Atribuição segura após a verificação
 
             return Page();
         }

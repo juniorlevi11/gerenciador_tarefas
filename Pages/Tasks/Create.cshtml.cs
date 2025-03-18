@@ -22,13 +22,15 @@ namespace GerenciadorTarefas.Pages.Tasks
         {
             if (!ModelState.IsValid)
             {
-                return Page();
+                return Page(); // Retorna a página se o modelo for inválido
             }
 
-            _context.Tasks.Add(TaskItem);
+            Console.WriteLine($"IsCompleted recebido no Create: {TaskItem.IsCompleted}"); // Log para verificar o valor recebido
+
+            _context.Tasks.Add(TaskItem); // Adiciona a nova tarefa ao banco de dados
             _context.SaveChanges();
 
-            return RedirectToPage("/Index");
+            return RedirectToPage("/Tasks/ViewAll"); // Redireciona para a página de listagem
         }
     }
 }

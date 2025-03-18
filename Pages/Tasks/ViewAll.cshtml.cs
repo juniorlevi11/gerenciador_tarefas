@@ -25,8 +25,8 @@ namespace GerenciadorTarefas.Pages.Tasks
                     Id = t.Id,
                     Nome = t.Title,
                     Descricao = t.Description,
-                    Concluido = t.IsCompleted,
-                    DueDate = t.DueDate // Certifique-se de que esta propriedade existe no banco de dados
+                    Concluido = t.IsCompleted, // Certifique-se de que este valor está correto
+                    DueDate = t.DueDate
                 })
                 .ToList();
         }

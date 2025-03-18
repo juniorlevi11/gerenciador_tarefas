@@ -16,5 +16,10 @@
         <label for="DueDate">Data de Vencimento</label>
         <input type="date" id="DueDate" name="TaskItem.DueDate" required />
     </div>
-    <button type="submit">Salvar</button>
+    <div>
+        <label for="IsCompleted">Concluído</label>
+        <input type="hidden" name="TaskItem.IsCompleted" value="false" /> <!-- Campo oculto para enviar false -->
+        <input type="checkbox" id="IsCompleted" name="TaskItem.IsCompleted" value="true" />
+    </div>
+    <button type="submit" class="btn btn-primary">Salvar</button>
 </form>

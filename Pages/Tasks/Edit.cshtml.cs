@@ -20,12 +20,19 @@ namespace GerenciadorTarefas.Pages.Tasks
 
         public IActionResult OnGet(int id)
         {
-            TaskItem = _context.Tasks.FirstOrDefault(t => t.Id == id);
-
-            if (TaskItem == null)
+            if (id <= 0) // Verifica se o ID é válido
             {
-                return NotFound(); // Retorna 404 se o item não for encontrado
+                return NotFound(); // Retorna 404 se o ID for inválido
             }
+
+            var task = _context.Tasks.FirstOrDefault(t => t.Id == id);
+
+            if (task == null)
+            {
+                return NotFound(); // Retorna 404 se a tarefa não for encontrada
+            }
+
+            TaskItem = task;
 
             return Page();
         }
@@ -34,27 +41,34 @@ namespace GerenciadorTarefas.Pages.Tasks
         {
             if (!ModelState.IsValid)
             {
-                return Page();
+                return Page(); // Retorna a página se o modelo for inválido
             }
 
-            var taskToUpdate = await _context.Tasks.FirstOrDefaultAsync(t => t.Id == TaskItem.Id);
-
-            if (taskToUpdate == null)
+            var taskInDb = await _context.Tasks.FindAsync(TaskItem.Id);
+            if (taskInDb == null)
             {
-                return NotFound();
+                return NotFound(); // Retorna 404 se a tarefa não for encontrada
             }
 
-            // Atualize os campos da tarefa, incluindo o status de conclusão
-            taskToUpdate.Title = TaskItem.Title;
-            taskToUpdate.Description = TaskItem.Description;
-            taskToUpdate.DueDate = TaskItem.DueDate;
-            taskToUpdate.IsCompleted = TaskItem.IsCompleted;
+            Console.WriteLine($"IsCompleted recebido no Edit: {TaskItem.IsCompleted}"); // Log para verificar o valor recebido
 
-            // Salve as alterações no banco de dados
-            await _context.SaveChangesAsync();
+            // Atualiza os campos da tarefa
+            taskInDb.Title = TaskItem.Title;
+            taskInDb.Description = TaskItem.Description;
+            taskInDb.DueDate = TaskItem.DueDate;
+            taskInDb.IsCompleted = TaskItem.IsCompleted;
 
-            // Redirecione para a página de lista de tarefas
-            return RedirectToPage("/Tasks/Index");
+            try
+            {
+                await _context.SaveChangesAsync(); // Salva as alterações no banco de dados
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                ModelState.AddModelError(string.Empty, "Erro de concorrência ao salvar as alterações.");
+                return Page(); // Retorna a página com o erro
+            }
+
+            return RedirectToPage("/Tasks/ViewAll"); // Redireciona para a página de listagem
         }
     }
 }

@@ -4,6 +4,7 @@
 <h1>Editar Tarefa</h1>
 
 <form method="post">
+    <input type="hidden" asp-for="TaskItem.Id" /> <!-- Campo oculto para o ID -->
     <div>
         <label for="Title">Título</label>
         <input type="text" id="Title" name="TaskItem.Title" value="@Model.TaskItem.Title" required />
@@ -18,8 +19,9 @@
     </div>
     <div>
         <label for="IsCompleted">Concluído</label>
-        <input type="checkbox" id="IsCompleted" name="TaskItem.IsCompleted" @(Model.TaskItem.IsCompleted ? "checked" : "") />
+        <input type="hidden" name="TaskItem.IsCompleted" value="false" /> <!-- Campo oculto para enviar false -->
+        <input type="checkbox" id="IsCompleted" name="TaskItem.IsCompleted" value="true" @(Model.TaskItem.IsCompleted ? "checked" : "") />
     </div>
     <button type="submit" class="btn btn-primary">Salvar Alterações</button>
-    <a asp-page="/Tasks/Index" class="btn btn-secondary">Cancelar</a>
+    <a asp-page="/Tasks/ViewAll" class="btn btn-secondary">Cancelar</a>
 </form>

@@ -8,10 +8,10 @@ namespace GerenciadorTarefas.Models
         public int Id { get; set; }
 
         [Required]
-        [StringLength(100)]
+        [MaxLength(100)]
         public string Title { get; set; } = string.Empty;
 
-        [StringLength(500)]
+        [MaxLength(500)]
         public string? Description { get; set; }
 
         [Required]

@@ -19,4 +19,16 @@ html {
 
 body {
   margin-bottom: 60px;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+th {
+  text-align: -webkit-match-parent;
+  text-align: match-parent;
+}
+
+.form-check-input {
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
 }
