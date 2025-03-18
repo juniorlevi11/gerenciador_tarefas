@@ -38,5 +38,5 @@ app.UseStaticFiles();
 app.UseRouting();
 app.UseAuthentication(); // Middleware de autenticação
 app.UseAuthorization();  // Middleware de autorização
-app.MapRazorPages();      // Certifique-se de que esta linha está presente
+app.MapRazorPages();      
 app.Run();
