@@ -17,7 +17,7 @@
         <input type="date" id="DueDate" name="TaskItem.DueDate" value="@Model.TaskItem.DueDate.ToString("yyyy-MM-dd")" required />
     </div>
     <div>
-        <label for="IsCompleted">Concluída</label>
+        <label for="IsCompleted">Concluído</label>
         <input type="checkbox" id="IsCompleted" name="TaskItem.IsCompleted" @(Model.TaskItem.IsCompleted ? "checked" : "") />
     </div>
     <button type="submit" class="btn btn-primary">Salvar Alterações</button>
