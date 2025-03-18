@@ -9,10 +9,10 @@ namespace GerenciadorTarefas.Models
 
         [Required]
         [StringLength(100)]
-        public string Title { get; set; } // Título da tarefa
+        public string Title { get; set; } = string.Empty; // Título da tarefa
 
         [StringLength(500)]
-        public string Description { get; set; } // Descrição da tarefa
+        public string? Description { get; set; } // Descrição da tarefa
 
         [Required]
         public DateTime DueDate { get; set; } // Data de vencimento da tarefa
