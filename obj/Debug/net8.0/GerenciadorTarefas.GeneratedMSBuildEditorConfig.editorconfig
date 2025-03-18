@@ -46,6 +46,14 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvVGFza3MvQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[/workspaces/gerenciador_tarefas/Pages/Tasks/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvVGFza3MvRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/workspaces/gerenciador_tarefas/Pages/Tasks/View.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvVGFza3MvVmlldy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [/workspaces/gerenciador_tarefas/Pages/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 

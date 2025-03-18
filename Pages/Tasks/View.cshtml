@@ -1,0 +1,19 @@
+@page "{id:int}"
+@model GerenciadorTarefas.Pages.Tasks.ViewModel
+
+<h1>Detalhes da Tarefa</h1>
+
+<div>
+    <strong>Título:</strong> @Model.TaskItem.Title
+</div>
+<div>
+    <strong>Descrição:</strong> @Model.TaskItem.Description
+</div>
+<div>
+    <strong>Data de Vencimento:</strong> @Model.TaskItem.DueDate.ToString("dd/MM/yyyy")
+</div>
+<div>
+    <strong>Concluída:</strong> @(Model.TaskItem.IsCompleted ? "Sim" : "Não")
+</div>
+
+<a asp-page="/Tasks/Index">Voltar</a>

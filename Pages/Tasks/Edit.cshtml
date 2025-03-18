@@ -1,0 +1,24 @@
+@page "{id:int}"
+@model GerenciadorTarefas.Pages.Tasks.EditModel
+
+<h1>Editar Tarefa</h1>
+
+<form method="post">
+    <div>
+        <label for="Title">Título</label>
+        <input type="text" id="Title" name="TaskItem.Title" value="@Model.TaskItem.Title" required />
+    </div>
+    <div>
+        <label for="Description">Descrição</label>
+        <textarea id="Description" name="TaskItem.Description">@Model.TaskItem.Description</textarea>
+    </div>
+    <div>
+        <label for="DueDate">Data de Vencimento</label>
+        <input type="date" id="DueDate" name="TaskItem.DueDate" value="@Model.TaskItem.DueDate.ToString("yyyy-MM-dd")" required />
+    </div>
+    <div>
+        <label for="IsCompleted">Concluída</label>
+        <input type="checkbox" id="IsCompleted" name="TaskItem.IsCompleted" @(Model.TaskItem.IsCompleted ? "checked" : "") />
+    </div>
+    <button type="submit">Salvar Alterações</button>
+</form>
